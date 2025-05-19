@@ -10,29 +10,11 @@
       href="./static/images/favicon.ico"
       type="image/x-icon"
     />
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-
-      html {
-        scroll-padding: 8rem;
-      }
-
-      * {
-        font-family: "Inter", sans-serif;
-      }
-
-      .no-scrollbar::-webkit-scrollbar {
-        display: none;
-      }
-      .no-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
-    </style>
+    <link rel="stylesheet" href="./static/css/main.css" />
   </head>
   <body class="bg-black text-white text-2xl">
     <div class="sticky top-0 z-50 bg-black h-[5rem] border-b border-[#323232]">
-      <nav class="max-w-[50rem] px-12 mx-auto h-full">
+      <nav class="max-w-[85rem] px-12 mx-auto h-full">
         <ul
           class="flex text-xl text-center justify-around items-center h-full text-white max-w-screen-xl mx-auto px-4"
         >
@@ -45,9 +27,9 @@
           </li>
           <li>
             <a
-              href="#screenshots"
+              href="#features"
               class="cursor-pointer duration-250 hover:text-[#b5b5b5]"
-              >Screenshots</a
+              >Features</a
             >
           </li>
           <li>
@@ -68,27 +50,27 @@
       </nav>
     </div>
 
-    <div class="max-w-[50rem] px-20 mx-auto py-32">
-      <div id="home" class="mt-16">
-        <p>
+    <div class="max-w-[85rem] px-20 mx-auto py-32">
+      <div id="home" class="mt-16 flex flex-col justify-center items-center">
+        <p class="text-center">
           <a
-            class="block cursor-pointer duration-250 hover:text-[#3af07c] hover:text-shadow-[0_0_15px_#3af07c] text-7xl md:text-8xl text-center font-bold text-[#3af07c]"
-            href="https://apps.apple.com/app/id[MY_APP_ID]"
+            class="block cursor-pointer duration-250 hover:text-[#3af07c] hover:text-shadow-[0_0_15px_#3af07c] text-6xl md:text-8xl font-bold text-[#3af07c]"
+            href="https://apps.apple.com/app/id{{ app_id }}"
             target="_blank"
             rel="noopener noreferrer"
           >
             GratefulTime
           </a>
         </p>
-        <p class="text-2xl md:text-4xl text-center font-bold py-8">
+        <p class="text-2xl md:text-4xl font-bold py-8 text-center">
           The modern digital gratitude journal
         </p>
       </div>
 
-      <div id="download" class="m-16">
+      <div id="download" class="my-16 md:mx-16">
         <a
           class="cursor-pointer duration-250 bg-[#1770ff] hover:bg-[#1a57ba] block md:w-1/2 p-4 mx-auto text-center rounded-2xl"
-          href="https://apps.apple.com/app/id[MY_APP_ID]"
+          href="https://apps.apple.com/app/id{{ app_id }}"
           target="_blank"
           rel="noopener noreferrer"
           >Download</a
@@ -99,33 +81,33 @@
         <button
           id="leftButton"
           onclick="scrollSlide(-1)"
-          class="text-4xl mx-2 cursor-pointer duration-250 hover:bg-[#323232] absolute left-0 top-1/2 -translate-x-full -translate-y-1/2 rounded-full bg-[#1c1c1c] bg-opacity-50 text-white px-5 py-2 z-10 disabled:opacity-30"
+          class="text-4xl cursor-pointer duration-250 hover:bg-[#323232] absolute left-0 top-1/2 -translate-x-full -translate-y-1/2 rounded-full bg-[#1c1c1c] bg-opacity-50 text-white px-5 py-2 z-10 disabled:opacity-30"
         >
           &#9204;
         </button>
 
         <div
           id="scrollContainer"
-          class="my-8 mx-4 py-4 flex flex-row overflow-x-scroll no-scrollbar scroll-smooth"
+          class="my-8 py-4 flex flex-col md:flex-row overflow-x-scroll no-scrollbar"
         >
           <img
             src="./static/images/grateful.png"
-            class="max-h-[30rem] rounded-4xl mr-4 select-none border-2 p-2 border-[#323232]"
+            class="my-8 mx-auto md:mx-4 md:max-w-[20rem] rounded-4xl select-none border-2 p-2 border-[#323232]"
           />
           <img
             src="./static/images/calendar.png"
-            class="max-h-[30rem] rounded-4xl mr-4 select-none border-2 p-2 border-[#323232]"
+            class="my-8 mx-auto md:mx-4 md:max-w-[20rem] rounded-4xl select-none border-2 p-2 border-[#323232]"
           />
           <img
             src="./static/images/entries.png"
-            class="max-h-[30rem] rounded-4xl select-none border-2 p-2 border-[#323232]"
+            class="my-8 mx-auto md:mx-4 md:max-w-[20rem] rounded-4xl select-none border-2 p-2 border-[#323232]"
           />
         </div>
 
         <button
           id="rightButton"
           onclick="scrollSlide(1)"
-          class="text-4xl mx-2 cursor-pointer duration-250 hover:bg-[#323232] absolute right-0 top-1/2 translate-x-full -translate-y-1/2 rounded-full bg-[#1c1c1c] bg-opacity-50 text-white px-5 py-2 z-10 disabled:opacity-30"
+          class="text-4xl cursor-pointer duration-250 hover:bg-[#323232] absolute right-0 top-1/2 translate-x-full -translate-y-1/2 rounded-full bg-[#1c1c1c] bg-opacity-50 text-white px-5 py-2 z-10 disabled:opacity-30"
         >
           &#9205;
         </button>
@@ -379,29 +361,6 @@
       </div>
     </div>
 
-    <script>
-      const el = (id) => document.getElementById(id);
-
-      const container = el("scrollContainer");
-      const leftButton = el("leftButton");
-      const rightButton = el("rightButton");
-
-      const updateButtonState = () => {
-        leftButton.disabled = container.scrollLeft <= 0;
-        rightButton.disabled =
-          container.scrollLeft >=
-          container.scrollWidth - container.clientWidth - 1;
-      };
-
-      const scrollSlide = (direction) =>
-        container.scrollBy({
-          left: container.clientWidth * direction,
-          behavior: "smooth",
-        });
-
-      container.addEventListener("scroll", updateButtonState);
-      window.addEventListener("resize", updateButtonState);
-      window.addEventListener("load", updateButtonState);
-    </script>
+    <script src="./static/js/main.js"></script>
   </body>
 </html>
